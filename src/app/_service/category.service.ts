@@ -17,18 +17,18 @@ export class CategoryService {
   }
 
   Getbycode(id:number) {
-    return this.http.get<category>(this.baseUrl + 'api/Categories?id='+id);
+    return this.http.get<category>(this.baseUrl + 'api/Categories/'+id);
   }
 
   Createcategory(_data: category) {
-    return this.http.post(this.baseUrl + 'api/Categories', _data);
+    return this.http.post(this.baseUrl + 'api/Categories', _data, { responseType: 'text' });
   }
 
   Updatecategory(_data: category) {
-    return this.http.put(this.baseUrl + 'api/Categories?id=' + _data.id, _data);
+    return this.http.put(this.baseUrl + 'api/Categories/' + _data.id, _data, { responseType: 'text' });
   }
 
   Deletecategory(code: number) {
-    return this.http.delete(this.baseUrl + 'api/Categories?id=' + code);
+    return this.http.delete(this.baseUrl + 'api/Categories/' + code, { responseType: 'text' });
   }
 }
