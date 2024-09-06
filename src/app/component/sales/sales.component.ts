@@ -8,6 +8,7 @@ import { UserService } from '../../_service/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { MaterialModule } from '../../material.module';
+import { sales } from '../../_model/sales.model';
 
 @Component({
   selector: 'app-sales',

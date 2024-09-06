@@ -1,4 +1,4 @@
-interface inventories{
+export interface inventories{
     id:number;
     productName:string;
     expiry:string;

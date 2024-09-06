@@ -11,6 +11,7 @@ import { UserroleComponent } from './component/userrole/userrole.component';
 import { AddcategoryComponent } from './component/addcategory/addcategory.component';
 import { MedicineComponent } from './component/medicine/medicine.component';
 import { InventoriesComponent } from './component/inventories/inventories.component';
+import { SalesComponent } from './component/sales/sales.component';
 
 export const routes: Routes = [
     {path:'',component:HomeComponent,canActivate:[authGuard]},
@@ -21,6 +22,7 @@ export const routes: Routes = [
     {path:'category',component:CategoryComponent,canActivate:[authGuard]},
     {path:'medicine',component:MedicineComponent,canActivate:[authGuard]},
     {path:'Inventories',component:InventoriesComponent,canActivate:[authGuard]},
+    {path:'Sales',component:SalesComponent,canActivate:[authGuard]},
     {path:'category/add',component:AddcategoryComponent,canActivate:[authGuard]},
     {path:'category/edit/:code',component:AddcategoryComponent,canActivate:[authGuard]},
     {path:'user',component:UserComponent,canActivate:[authGuard]},
