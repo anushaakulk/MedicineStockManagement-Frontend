@@ -1,0 +1,25 @@
+
+<!-- feedback.component.html -->
+<h1>Feedback</h1>
+<p>We value your feedback. Please let us know if you encountered any issues.</p>
+
+<div class="rating">
+    <p>Rate our application:</p>
+    <input type="radio" id="star5" name="rating" [(ngModel)]="rating" value="5">
+    <label for="star5">5 Stars</label>
+    <input type="radio" id="star4" name="rating" [(ngModel)]="rating" value="4">
+    <label for="star4">4 Stars</label>
+    <input type="radio" id="star3" name="rating" [(ngModel)]="rating" value="3">
+    <label for="star3">3 Stars</label>
+    <input type="radio" id="star2" name="rating" [(ngModel)]="rating" value="2">
+    <label for="star2">2 Stars</label>
+    <input type="radio" id="star1" name="rating" [(ngModel)]="rating" value="1">
+    <label for="star1">1 Star</label>
+</div>
+
+<div class="feedback-form">
+    <textarea [(ngModel)]="feedback" placeholder="Describe your issue here..."></textarea>
+    <br>
+    <button (click)="submitFeedback()">Submit</button>
+</div>
+
