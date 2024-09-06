@@ -1,5 +1,5 @@
 export interface category {
-    id: number,
+    id?: number,
     cname: string
     // email: string
     // phone: string

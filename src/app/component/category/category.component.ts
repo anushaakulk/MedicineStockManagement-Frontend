@@ -51,7 +51,7 @@ export class CategoryComponent implements OnInit {
       if (confirm('Are you sure?')) {
         this.service.Deletecategory(code).subscribe(item=>{
           this._response=item;
-          if (this._response.result === 'pass') {
+          if (this._response) {
             this.toastr.success('Deleted successfully', 'Success');
             this.Loadcustomer();
           } else {

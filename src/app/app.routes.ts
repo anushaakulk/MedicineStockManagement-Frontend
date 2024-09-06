@@ -22,7 +22,7 @@ export const routes: Routes = [
     {path:'medicine',component:MedicineComponent,canActivate:[authGuard]},
     {path:'Inventories',component:InventoriesComponent,canActivate:[authGuard]},
     {path:'category/add',component:AddcategoryComponent,canActivate:[authGuard]},
-    {path:'category/edit/:code',component:AddcategoryComponent,canActivate:[authGuard]},
+    {path:'category/edit/:id',component:AddcategoryComponent,canActivate:[authGuard]},
     {path:'user',component:UserComponent,canActivate:[authGuard]},
     {path:'userrole',component:UserroleComponent,canActivate:[authGuard]}
 ];
