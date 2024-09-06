@@ -9,7 +9,8 @@ import { UserComponent } from './component/user/user.component';
 import { authGuard } from './_guard/auth.guard';
 import { UserroleComponent } from './component/userrole/userrole.component';
 import { AddcategoryComponent } from './component/addcategory/addcategory.component';
-import { MedicineComponent } from './component/medicines/medicine.component';
+import { MedicineComponent } from './component/medicine/medicine.component';
+import { InventoriesComponent } from './component/inventories/inventories.component';
 
 export const routes: Routes = [
     {path:'',component:HomeComponent,canActivate:[authGuard]},
@@ -19,6 +20,7 @@ export const routes: Routes = [
     {path:'resetpassword',component:ResetpasswordComponent},
     {path:'category',component:CategoryComponent,canActivate:[authGuard]},
     {path:'medicine',component:MedicineComponent,canActivate:[authGuard]},
+    {path:'Inventories',component:InventoriesComponent,canActivate:[authGuard]},
     {path:'category/add',component:AddcategoryComponent,canActivate:[authGuard]},
     {path:'category/edit/:code',component:AddcategoryComponent,canActivate:[authGuard]},
     {path:'user',component:UserComponent,canActivate:[authGuard]},
