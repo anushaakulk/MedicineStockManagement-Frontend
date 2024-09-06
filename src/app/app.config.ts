@@ -8,5 +8,5 @@ import { provideToastr } from 'ngx-toastr';
 import { tokenInterceptor } from './_service/token.interceptor';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideAnimationsAsync(),provideHttpClient(withInterceptors([tokenInterceptor])),provideToastr({closeButton:true})]
+  providers: [provideRouter(routes), provideAnimationsAsync(),provideHttpClient(withInterceptors([tokenInterceptor])),provideToastr({closeButton:true}), provideAnimationsAsync()]
 };

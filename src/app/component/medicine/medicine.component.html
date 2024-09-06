@@ -1,0 +1,64 @@
+
+<mat-card>
+    <mat-card-header>
+        <h1>Medicines</h1>
+            <button style="margin-left: 70%;" mat-raised-button color="primary" routerLink="/medicine/add">Add Medicine</button>
+        
+        
+    </mat-card-header>
+    <mat-card-content>
+        <table mat-table [dataSource]="datasource"matSort>
+
+            <ng-container matColumnDef="mname">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+                <td mat-cell *matCellDef="let element">{{element.mname}}</td>
+          </ng-container>
+          <ng-container matColumnDef="cname">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Category Name</th>
+            <td mat-cell *matCellDef="let element">{{element.cname}}</td>
+      </ng-container>
+      <ng-container matColumnDef="mdescription">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+        <td mat-cell *matCellDef="let element">{{element.mdescription}}</td>
+  </ng-container>
+  <ng-container matColumnDef="measurement">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Measurement</th>
+    <td mat-cell *matCellDef="let element">{{element.measurement}}</td>
+</ng-container>
+<ng-container matColumnDef="needsprescription">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Needs Prescription</th>
+    <td mat-cell *matCellDef="let element">{{element.needsprescription}}</td>
+</ng-container>
+<ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+    <td mat-cell *matCellDef="let element">{{element.price}}</td>
+</ng-container>
+<ng-container matColumnDef="stockin">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>StockIn</th>
+    <td mat-cell *matCellDef="let element">{{element.stockin}}</td>
+</ng-container>
+<ng-container matColumnDef="stockout">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>StockOut</th>
+    <td mat-cell *matCellDef="let element">{{element.stockout}}</td>
+</ng-container>
+<ng-container matColumnDef="stockavailable">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Stock Available</th>
+    <td mat-cell *matCellDef="let element">{{element.stockavailable}}</td>
+</ng-container>
+
+<ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let element">
+        <button (click)="functionedit(element.code)" mat-raised-button color="primary">Edit</button>
+        <button (click)="functiondelete(element.code)" mat-raised-button color="accent">Delete</button>
+    </td>
+</ng-container>
+            <tr class="table-header" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row;columns:displayedColumns"></tr>
+        </table>
+    </mat-card-content>
+    <br>
+    <mat-card-footer>
+        <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
+    </mat-card-footer>
+</mat-card>
