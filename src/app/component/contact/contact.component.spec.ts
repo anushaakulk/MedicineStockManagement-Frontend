@@ -26,7 +26,7 @@ describe('ContactComponent', () => {
   it('should display contact information', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain('Contact Us');
-    expect(compiled.querySelector('p')?.textContent).toContain('123456789');
+    expect(compiled.querySelector('p')?.textContent).toContain('9876543215');
   });
 });
 
