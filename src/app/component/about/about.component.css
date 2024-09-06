@@ -1,0 +1,21 @@
+/* about.component.css */
+.about-container {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 150px;
+    margin: 0;
+   
+    padding-left: 450px;
+    padding-right:450px;
+  }
+  
+  h1 {
+    color: #333;
+    padding-top: 100px;
+  }
+  
+  p {
+    color: #666;
+  }
+  

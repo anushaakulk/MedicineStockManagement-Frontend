@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatCard, MatCardContent, MatCardFooter, MatCardHeader } from '@angular/material/card';
 import { MaterialModule } from '../../material.module';
+import { inventories } from '../../_model/inventories.model';
 
 @Component({
   selector: 'app-inventories',

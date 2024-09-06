@@ -1,4 +1,5 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router';
+
 import { HomeComponent } from './component/home/home.component';
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
@@ -11,6 +12,9 @@ import { UserroleComponent } from './component/userrole/userrole.component';
 import { AddcategoryComponent } from './component/addcategory/addcategory.component';
 import { MedicineComponent } from './component/medicine/medicine.component';
 import { InventoriesComponent } from './component/inventories/inventories.component';
+import { AboutComponent } from './component/about/about.component';
+import { ContactComponent } from './component/contact/contact.component';
+import { FeedbackComponent } from './component/feedback/feedback.component';
 
 export const routes: Routes = [
     {path:'',component:HomeComponent,canActivate:[authGuard]},
@@ -24,5 +28,9 @@ export const routes: Routes = [
     {path:'category/add',component:AddcategoryComponent,canActivate:[authGuard]},
     {path:'category/edit/:id',component:AddcategoryComponent,canActivate:[authGuard]},
     {path:'user',component:UserComponent,canActivate:[authGuard]},
-    {path:'userrole',component:UserroleComponent,canActivate:[authGuard]}
+    {path:'userrole',component:UserroleComponent,canActivate:[authGuard]},
+    {path:'about',component:AboutComponent},
+    {path:'contact',component:ContactComponent},
+    {path:'feedback',component:FeedbackComponent}
+    
 ];
