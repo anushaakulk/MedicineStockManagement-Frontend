@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { inventories } from '../_model/inventories.model';
+import { Inventories } from '../_model/inventories.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,22 +13,22 @@ export class InventoriesService {
   baseUrl = environment.apiUrl;
 
   Getall() {
-    return this.http.get<inventories[]>(this.baseUrl + 'api/Inventories');
+    return this.http.get<Inventories[]>(this.baseUrl + 'api/Inventories');
   }
 
   Getbycode(id:number) {
-    return this.http.get<inventories>(this.baseUrl + 'Customer/Getbycode?code='+id);
+    return this.http.get<Inventories>(this.baseUrl + 'api/Inventories/'+id);
   }
 
-  Createcustomer(_data: inventories) {
-    return this.http.post(this.baseUrl + 'Customer/create', _data);
+  CreateInventory(_data: Inventories) {
+    return this.http.post(this.baseUrl + 'api/Inventories', _data,{ responseType: 'text' });
   }
 
-  Updatecustomer(_data: inventories) {
-    return this.http.put(this.baseUrl + 'Customer/Update?code=' + _data.id, _data);
+  UpdateInventory(_data: Inventories) {
+    return this.http.put(this.baseUrl + 'api/Inventories/' + _data.id, _data,{ responseType: 'text' });
   }
 
-  Deletecustomer(code: string) {
-    return this.http.delete(this.baseUrl + 'Customer/Remove?code=' + code);
+  DeleteInventory(id: number) {
+    return this.http.delete(this.baseUrl + 'api/Inventories/' + id,{ responseType: 'text' });
   }
 }

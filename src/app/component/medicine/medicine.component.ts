@@ -46,12 +46,12 @@ export class MedicineComponent implements OnInit {
   }
 
   functionedit(code: string) {
-      this.router.navigateByUrl('/customer/edit/' + code)
+      this.router.navigateByUrl('/medicinelist/edit/' + code)
   }
 
-  functiondelete(code: string) {
+  functiondelete(code: number) {
       if (confirm('Are you sure?')) {
-        this.service.Deletecustomer(code).subscribe(item=>{
+        this.service.DeleteMedicineList(code).subscribe(item=>{
           this._response=item;
           if (this._response.result === 'pass') {
             this.toastr.success('Deleted successfully', 'Success');

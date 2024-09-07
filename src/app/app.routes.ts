@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+// import { Routes } from '@angular/router';
 import { HomeComponent } from './component/home/home.component';
 import { LoginComponent } from './component/login/login.component';
 import { RegisterComponent } from './component/register/register.component';
@@ -12,6 +12,9 @@ import { AddcategoryComponent } from './component/addcategory/addcategory.compon
 import { MedicineComponent } from './component/medicine/medicine.component';
 import { InventoriesComponent } from './component/inventories/inventories.component';
 import { SalesComponent } from './component/sales/sales.component';
+import { Routes } from '@angular/router';
+import { AddmedicinelistComponent } from './component/addmedicinelist/addmedicinelist.component';
+import { AddinventoriesComponent } from './component/addinventories/addinventories.component';
 
 export const routes: Routes = [
     {path:'',component:HomeComponent,canActivate:[authGuard]},
@@ -25,6 +28,10 @@ export const routes: Routes = [
     {path:'Sales',component:SalesComponent,canActivate:[authGuard]},
     {path:'category/add',component:AddcategoryComponent,canActivate:[authGuard]},
     {path:'category/edit/:id',component:AddcategoryComponent,canActivate:[authGuard]},
+    {path:'medicine/add',component:AddmedicinelistComponent,canActivate:[authGuard]},
+    {path:'medicine/edit/:id',component:AddmedicinelistComponent,canActivate:[authGuard]},
+    {path:'Inventories/add',component:AddinventoriesComponent,canActivate:[authGuard]},
+    {path:'Inventories/edit/:id',component:AddinventoriesComponent,canActivate:[authGuard]},
     {path:'user',component:UserComponent,canActivate:[authGuard]},
     {path:'userrole',component:UserroleComponent,canActivate:[authGuard]}
 ];

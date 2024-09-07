@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatCard, MatCardContent, MatCardFooter, MatCardHeader } from '@angular/material/card';
 import { MaterialModule } from '../../material.module';
-import { inventories } from '../../_model/inventories.model';
+import { Inventories } from '../../_model/inventories.model';
 
 @Component({
   selector: 'app-inventories',
@@ -19,8 +19,8 @@ import { inventories } from '../../_model/inventories.model';
 })
 
 export class InventoriesComponent {
-  customerlist!: inventories[];
-  displayedColumns: string[] = ["id","productName","expiry","units","action"];
+  customerlist!: Inventories[];
+  displayedColumns: string[] = ["id","productname","expiry","units","action"];
   datasource: any;
   _response:any;
 
@@ -40,21 +40,21 @@ export class InventoriesComponent {
       this.customerlist = item;
       console.log(item);
       console.log(this.customerlist);
-      this.datasource = new MatTableDataSource<inventories>(this.customerlist);
+      this.datasource = new MatTableDataSource<Inventories>(this.customerlist);
       this.datasource.paginator = this.paginator;
       this.datasource.sort = this.sort;
     })
   }
 
-  functionedit(code: string) {
-      this.router.navigateByUrl('/customer/edit/' + code)
+  functionedit(id: number) {
+      this.router.navigateByUrl('/Inventories/edit/' + id)
   }
 
-  functiondelete(code: string) {
+  functiondelete(id: number) {
       if (confirm('Are you sure?')) {
-        this.service.Deletecustomer(code).subscribe(item=>{
+        this.service.DeleteInventory(id).subscribe(item=>{
           this._response=item;
-          if (this._response.result === 'pass') {
+          if (this._response) {
             this.toastr.success('Deleted successfully', 'Success');
             this.Loadcustomer();
           } else {

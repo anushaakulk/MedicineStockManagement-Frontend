@@ -1,4 +1,5 @@
 export interface medicine {
+    id?:number,
     mname: string,
     cname: string,
     mdescription: string,

@@ -7,10 +7,12 @@
         </mat-card-header>
         <mat-card-content>
 
-            <mat-form-field>
+            @if(!this.isedit===false){
+                <mat-form-field>
                 <mat-label>Id</mat-label>
                 <input formControlName="id" matInput />
-            </mat-form-field>
+                </mat-form-field>
+                            }
             <mat-form-field>
                 <mat-label>Name</mat-label>
                 <input formControlName="cname" matInput />
