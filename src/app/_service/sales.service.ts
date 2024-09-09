@@ -14,22 +14,22 @@ export class SalesService {
   baseUrl = environment.apiUrl;
 
   Getall() {
-    return this.http.get<sales[]>(this.baseUrl + 'api/SalesList');
+    return this.http.get<sales[]>(this.baseUrl + 'api/Sales');
   }
 
   Getbycode(id:number) {
-    return this.http.get<sales>(this.baseUrl + 'api/SalesList'+id);
+    return this.http.get<sales>(this.baseUrl + 'api/Sales'+id);
   }
 
   CreateSales(_data: sales) {
-    return this.http.post(this.baseUrl + 'api/SalesList', _data,{ responseType: 'text' });
+    return this.http.post(this.baseUrl + 'api/Sales', _data,{ responseType: 'text' });
   }
 
   UpdateSales(_data: sales) {
-    return this.http.put(this.baseUrl + 'api/SalesList' + _data.id, _data,{ responseType: 'text' });
+    return this.http.put(this.baseUrl + 'api/Sales' + _data.id, _data,{ responseType: 'text' });
   }
 
-  DeleteSales(code: string) {
-    return this.http.delete(this.baseUrl + 'api/SalesList' + code,{ responseType: 'text' });
+  DeleteSales(code: number) {
+    return this.http.delete(this.baseUrl + 'api/Sales/' + code,{ responseType: 'text' });
   }
 }
