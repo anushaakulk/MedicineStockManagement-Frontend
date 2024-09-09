@@ -19,7 +19,7 @@ import { sales } from '../../_model/sales.model';
 })
 export class SalesComponent {
   customerlist!: sales[];
-  displayedColumns: string[] = ["id","Sdate","Refid","SupplierId","action"];
+  displayedColumns: string[] = ["id","sdate","refid","supplierId","action"];
   datasource: any;
   _response:any;
 
@@ -46,11 +46,11 @@ export class SalesComponent {
     })
   }
 
-  functionedit(code: string) {
-      this.router.navigateByUrl('/SalesList/edit/' + code)
+  functionedit(code: number) {
+      this.router.navigateByUrl('/Sales/edit/' + code)
   }
 
-  functiondelete(code: string) {
+  functiondelete(code: number) {
       if (confirm('Are you sure?')) {
         this.service.DeleteSales(code).subscribe(item=>{
           this._response=item;
