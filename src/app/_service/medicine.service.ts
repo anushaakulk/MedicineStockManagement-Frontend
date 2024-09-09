@@ -28,7 +28,7 @@ export class MedicineService {
     return this.http.put(this.baseUrl + 'api/MedicinesLists/' + _data.mname, _data, { responseType: 'text' });
   }
 
-  DeleteMedicineList(code: number) {
-    return this.http.delete(this.baseUrl + 'api/MedicinesLists/' + code, { responseType: 'text' });
+  DeleteMedicineList(id: number) {
+    return this.http.delete(this.baseUrl + 'api/MedicinesLists/' + id, { responseType: 'text' });
   }
 }

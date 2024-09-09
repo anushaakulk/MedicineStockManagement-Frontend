@@ -8,6 +8,7 @@ import { UserService } from '../../_service/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-category',
@@ -42,13 +43,30 @@ export class CategoryComponent implements OnInit {
       this.datasource.sort = this.sort;
     })
   }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.datasource.filter = filterValue.trim().toLowerCase();
+
+    if (this.datasource.paginator) {
+      this.datasource.paginator.firstPage();
+    }
+  }
 
   functionedit(id: number) {
       this.router.navigateByUrl('/category/edit/' + id)
   }
 
   functiondelete(code: number) {
-      if (confirm('Are you sure?')) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You won\'t be able to revert this!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) =>{
+      if(result.isConfirmed){
         this.service.Deletecategory(code).subscribe(item=>{
           this._response=item;
           if (this._response) {
@@ -59,6 +77,7 @@ export class CategoryComponent implements OnInit {
           }
         })
       }
+    }) 
   }
 
 }

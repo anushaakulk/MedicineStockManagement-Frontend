@@ -24,18 +24,18 @@ export class AppmenuComponent implements OnInit, DoCheck {
   showmenu = true;
 
   ngOnInit(): void {
-    let userrole = localStorage.getItem('userrole') as string;
+    let userrole = sessionStorage.getItem('userrole') as string;
 
 
   }
 
   ngDoCheck(): void {
-    this.Loginuser = localStorage.getItem('username') as string;
+    this.Loginuser = sessionStorage.getItem('username') as string;
     this.Setaccess();
   }
 
   Setaccess() {
-    let userrole = localStorage.getItem('userrole');
+    let userrole = sessionStorage.getItem('userrole');
     let currentUrl = this.router.url;
     if (currentUrl === '/register' || currentUrl === '/login' || currentUrl === '/resetpassword' ||
       currentUrl === '/forgetpassword') {

@@ -18,16 +18,15 @@
                                 <input formControlName="mname" matInput />
                             </mat-form-field>
             <mat-form-field>
-                <mat-label>Category Name</mat-label>
-                <input formControlName="cname" matInput />
-            </mat-form-field>
-            <mat-form-field>
                 <mat-label>Medicine Description</mat-label>
                 <input formControlName="mdescription" matInput />
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Needs Prescription</mat-label>
-                <input formControlName="needsprescription" matInput />
+                <mat-select formControlName="needsprescription">
+                    <mat-option [value]="true">Yes</mat-option>
+                    <mat-option [value]="false">No</mat-option>
+                </mat-select>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Measurement</mat-label>
@@ -41,13 +40,22 @@
                 <mat-label>Stock In</mat-label>
                 <input formControlName="stockin" matInput />
             </mat-form-field>
+            <!---Category Dropdown---->
+            <mat-form-field>
+                <mat-label>Select Category</mat-label>
+                <mat-select formControlName="cname" (selectionChange)="onCategoryChange($event.value)">
+                    <mat-option *ngFor="let category of categories" [value]="category.id">
+                        {{ category.cname }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
         </mat-card-content>
         <mat-card-actions>
             <div class="div-50">
                 <button type="submit" mat-raised-button color="primary">Save</button>
             </div>
             <div class="div-50">
-                <a routerLink="medicine" mat-raised-button color="accent">Cancel</a>
+                <a routerLink="/category" mat-raised-button color="accent">Cancel</a>
             </div>
             
 

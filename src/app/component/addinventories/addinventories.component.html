@@ -13,17 +13,29 @@
                 <input formControlName="id" matInput />
                 </mat-form-field>
                             }
+                            <!---Category Dropdown---->
+            <mat-form-field>
+                <mat-label>Select Medicine</mat-label>
+                <mat-select formControlName="productName" (selectionChange)="onMedicineChange($event.value)">
+                    <mat-option *ngFor="let medicine of medicines" [value]="medicine.id">
+                        {{ medicine.mname }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Sku</mat-label>
+                <input formControlName="sku" matInput />
+            </mat-form-field>
                             <mat-form-field>
-                                <mat-label>Product Name</mat-label>
-                                <input formControlName="productName" matInput />
-                            </mat-form-field>    
+                                <mat-label>Choose a date</mat-label>
+                                <input matInput formControlName="expiry" [matDatepicker]="picker">
+                                <mat-hint>MM/DD/YYYY</mat-hint>
+                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                              </mat-form-field>  
         <mat-form-field>
-            <mat-label>expiry</mat-label>
-            <input formControlName="expiry" matInput />
-        </mat-form-field>   
-        <mat-form-field>
-            <mat-label>units</mat-label>
-            <input formControlName="units" matInput />
+            <mat-label>Number of units</mat-label>
+            <input formControlName="no_of_units" matInput />
         </mat-form-field>
         </mat-card-content>
         <mat-card-actions>

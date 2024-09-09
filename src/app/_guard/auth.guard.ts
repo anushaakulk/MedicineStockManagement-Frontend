@@ -14,7 +14,7 @@ export const authGuard: CanActivateFn = (route, state) => {
     menuname = route.url[0].path;
   }
 
-  if (localStorage.getItem('username') != null) {
+  if (sessionStorage.getItem('username') != null) {
     return true;
   } else {
     toastr.warning('Unauthorized access');

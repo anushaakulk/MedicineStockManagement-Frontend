@@ -1,6 +1,7 @@
 export interface Inventories{
     id?:number;
-    productName:string;
-    expiry:string;
-    units:number
+    productid:number;
+    sku:number;
+    expiry:Date;
+    no_of_units:number
   }

@@ -2,8 +2,9 @@ export interface userregister {
     userName: string;
     userType: string;
     phone: string;
-    email: string;
-    phash: string
+    userEmail: string;
+    phash: string;
+    securityQuestion: string;
 }
 
 export interface registerconfirm {

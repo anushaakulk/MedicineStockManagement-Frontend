@@ -7,6 +7,11 @@
         
     </mat-card-header>
     <mat-card-content>
+        <!-- Add Search Input -->
+        <mat-form-field appearance="fill">
+            <mat-label>Search Categories</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Enter category name">
+        </mat-form-field>
         <table mat-table [dataSource]="datasource"matSort>
             <ng-container matColumnDef="id">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
