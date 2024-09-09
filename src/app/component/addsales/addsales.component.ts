@@ -36,7 +36,7 @@ export class AddsalesComponent {
       this.service.Getbycode(this.editcode).subscribe(item => {
         this.editdata = item;
         this.customerform.setValue({
-          id: this.editcode, Sdate: this.editdata.Sdate,Refid:this.editdata.Refid,SupplierId:this.editdata.SupplierId
+          id: this.editcode, sdate: this.editdata.sdate,refid:this.editdata.refid,supplierId:this.editdata.supplierId
         })
       })
     }
@@ -45,18 +45,18 @@ export class AddsalesComponent {
 
   customerform = this.builder.group({
     id: this.builder.control(0, Validators.required),
-    Sdate: this.builder.control('', Validators.required),
-    Refid:this.builder.control(0,Validators.required),
-    SupplierId:this.builder.control(0,Validators.required)
+    sdate: this.builder.control('', Validators.required),
+    refid:this.builder.control(0,Validators.required),
+    supplierId:this.builder.control(0,Validators.required)
   })
 
   Savecustomer() {
     if (this.customerform.valid) {
 
       let _obj: sales = {
-        Sdate: this.customerform.value.Sdate as string,
-        Refid:this.customerform.value.Refid as number,
-        SupplierId:this.customerform.value.SupplierId as number
+        sdate: this.customerform.value.sdate as string,
+        refid:this.customerform.value.refid as number,
+        supplierId:this.customerform.value.supplierId as number
       }
 
       if (!this.isedit) {
@@ -64,7 +64,7 @@ export class AddsalesComponent {
           this._response = item;
           if (this._response.includes('Sales')) {
             this.toastr.success('Created successfully', 'Success');
-            this.router.navigateByUrl('/SalesList');
+            this.router.navigateByUrl('/Sales');
           } else {
             this.toastr.error('Due to:' + this._response.message, 'Failed');
           }
@@ -75,7 +75,7 @@ export class AddsalesComponent {
           this._response = item;
           if (this._response) {
             this.toastr.success('Updated successfully', 'Success');
-            this.router.navigateByUrl('/category');
+            this.router.navigateByUrl('/Sales');
           } else {
             this.toastr.error('Due to:' + this._response.message, 'Failed');
           }
