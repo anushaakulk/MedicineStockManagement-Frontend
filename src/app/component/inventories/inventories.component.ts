@@ -9,7 +9,6 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatCard, MatCardContent, MatCardFooter, MatCardHeader } from '@angular/material/card';
 import { MaterialModule } from '../../material.module';
 import { Inventories } from '../../_model/inventories.model';
-import { inventories } from '../../_model/inventories.model';
 
 @Component({
   selector: 'app-inventories',
