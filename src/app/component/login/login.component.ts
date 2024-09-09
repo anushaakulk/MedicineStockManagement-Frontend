@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    localStorage.clear();
+    sessionStorage.clear();
     // this.service._menulist.set([]);
 
   }
@@ -42,9 +42,9 @@ export class LoginComponent implements OnInit {
       this.service.Proceedlogin(_obj).subscribe(item => {
         this._response = item;
         console.log(this._response.data);
-        localStorage.setItem('token', this._response.data);
-        localStorage.setItem('username', _obj.username);
-        localStorage.setItem('userrole', this._response.userRole);
+        sessionStorage.setItem('token', this._response.data);
+        sessionStorage.setItem('username', _obj.username);
+        sessionStorage.setItem('userrole', this._response.userRole);
         // this.service.Loadmenubyrole(this._response.userRole).subscribe(item=>{
         //   this.service._menulist.set(item);
         // })
