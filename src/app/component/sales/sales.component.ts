@@ -6,19 +6,20 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { SalesService } from '../../_service/sales.service';
 import { UserService } from '../../_service/user.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MaterialModule } from '../../material.module';
+import { sales } from '../../_model/sales.model';
 
 @Component({
   selector: 'app-sales',
   standalone: true,
-  imports: [MaterialModule],
+  imports: [MaterialModule,RouterLink],
   templateUrl: './sales.component.html',
   styleUrl: './sales.component.css'
 })
 export class SalesComponent {
   customerlist!: sales[];
-  displayedColumns: string[] = ["id","productName","expiry","units","action"];
+  displayedColumns: string[] = ["id","Sdate","Refid","SupplierId","action"];
   datasource: any;
   _response:any;
 
@@ -33,6 +34,7 @@ export class SalesComponent {
     this.Loadcustomer();
   }
 
+  
   Loadcustomer() {
     this.service.Getall().subscribe(item => {
       this.customerlist = item;
@@ -45,12 +47,12 @@ export class SalesComponent {
   }
 
   functionedit(code: string) {
-      this.router.navigateByUrl('/customer/edit/' + code)
+      this.router.navigateByUrl('/SalesList/edit/' + code)
   }
 
   functiondelete(code: string) {
       if (confirm('Are you sure?')) {
-        this.service.Deletecustomer(code).subscribe(item=>{
+        this.service.DeleteSales(code).subscribe(item=>{
           this._response=item;
           if (this._response.result === 'pass') {
             this.toastr.success('Deleted successfully', 'Success');

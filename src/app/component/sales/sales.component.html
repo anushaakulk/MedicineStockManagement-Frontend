@@ -1,8 +1,8 @@
 
 <mat-card>
     <mat-card-header>
-        <h1>Inventories</h1>
-            <button style="margin-left: 70%;" mat-raised-button color="primary" routerLink="/Inventories/add">Add Inventories</button>
+        <h1>Sales Data</h1>
+            <button style="margin-left: 70%;" mat-raised-button color="primary" routerLink="/SalesList/add">Add Sales</button>
         
         
     </mat-card-header>
@@ -13,17 +13,17 @@
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
     <td mat-cell *matCellDef="let element">{{element.id}}</td>
 </ng-container>
-<ng-container matColumnDef="productName">
-    <th mat-header-cell *matHeaderCellDef> Product Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
+<ng-container matColumnDef="Sdate">
+    <th mat-header-cell *matHeaderCellDef> Sales Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.Sdate}} </td>
 </ng-container>
-<ng-container matColumnDef="expiry">
-    <th mat-header-cell *matHeaderCellDef> Expiry Date </th>
-    <td mat-cell *matCellDef="let element"> {{element.expiry}} </td>
+<ng-container matColumnDef="Refid">
+    <th mat-header-cell *matHeaderCellDef> Reference Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.Refid}} </td>
 </ng-container>
-<ng-container matColumnDef="units">
-    <th mat-header-cell *matHeaderCellDef> Units </th>
-      <td mat-cell *matCellDef="let element"> {{element.units}} </td>
+<ng-container matColumnDef="SupplierId">
+    <th mat-header-cell *matHeaderCellDef> Suuplier Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.SupplierId}} </td>
 </ng-container>
 
 <ng-container matColumnDef="action">

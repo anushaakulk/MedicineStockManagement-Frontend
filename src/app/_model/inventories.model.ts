@@ -1,6 +1,6 @@
-export class inventories{
-    id:number=0;
-    productName:string='';
-    expiry:string='';
-    units:number=0;
+export interface Inventories{
+    id?:number;
+    productName:string;
+    expiry:string;
+    units:number
   }
