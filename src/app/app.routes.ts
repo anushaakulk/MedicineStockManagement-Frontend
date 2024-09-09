@@ -18,6 +18,9 @@ import { FeedbackComponent } from './component/feedback/feedback.component';
 import { SalesComponent } from './component/sales/sales.component';
 import { AddmedicinelistComponent } from './component/addmedicinelist/addmedicinelist.component';
 import { AddinventoriesComponent } from './component/addinventories/addinventories.component';
+import { AddsalesComponent } from './component/addsales/addsales.component';
+import { OrderDetailsComponent } from './component/order-details/order-details.component';
+import { AddorderDetailsComponent } from './component/addorder-details/addorder-details.component';
 
 export const routes: Routes = [
     {path:'',component:HomeComponent,canActivate:[authGuard]},
@@ -29,12 +32,17 @@ export const routes: Routes = [
     {path:'medicine',component:MedicineComponent,canActivate:[authGuard]},
     {path:'Inventories',component:InventoriesComponent,canActivate:[authGuard]},
     {path:'Sales',component:SalesComponent,canActivate:[authGuard]},
+    {path:'OrderDetails',component:OrderDetailsComponent,canActivate:[authGuard]},
     {path:'category/add',component:AddcategoryComponent,canActivate:[authGuard]},
     {path:'category/edit/:id',component:AddcategoryComponent,canActivate:[authGuard]},
     {path:'medicine/add',component:AddmedicinelistComponent,canActivate:[authGuard]},
     {path:'medicine/edit/:id',component:AddmedicinelistComponent,canActivate:[authGuard]},
     {path:'Inventories/add',component:AddinventoriesComponent,canActivate:[authGuard]},
     {path:'Inventories/edit/:id',component:AddinventoriesComponent,canActivate:[authGuard]},
+    {path:'SalesList/add',component:AddsalesComponent,canActivate:[authGuard]},
+    {path:'SalesList/edit/:id',component:AddsalesComponent,canActivate:[authGuard]},
+    {path:'OrderDetails/add',component:AddorderDetailsComponent,canActivate:[authGuard]},
+    {path:'OrderDetails/edit/:id',component:AddorderDetailsComponent,canActivate:[authGuard]},
     {path:'user',component:UserComponent,canActivate:[authGuard]},
     {path:'userrole',component:UserroleComponent,canActivate:[authGuard]},
     {path:'about',component:AboutComponent},

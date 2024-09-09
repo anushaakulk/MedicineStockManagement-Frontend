@@ -1,25 +1,24 @@
 import { Component, ViewChild } from '@angular/core';
+import { OrderDetails } from '../../_model/orderDetails.model';
+import { MaterialModule } from '../../material.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { InventoriesService } from '../../_service/inventories.service';
+import { OrderDetailsService } from '../../_service/order-details.service';
 import { UserService } from '../../_service/user.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router, RouterLink } from '@angular/router';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { MatCard, MatCardContent, MatCardFooter, MatCardHeader } from '@angular/material/card';
-import { MaterialModule } from '../../material.module';
-import { Inventories } from '../../_model/inventories.model';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
-  selector: 'app-inventories',
+  selector: 'app-order-details',
   standalone: true,
-  imports: [MaterialModule,RouterLink],
-  templateUrl: './inventories.component.html',
-  styleUrl: './inventories.component.css'
+  imports: [MaterialModule,ReactiveFormsModule,RouterLink],
+  templateUrl: './order-details.component.html',
+  styleUrl: './order-details.component.css'
 })
-
-export class InventoriesComponent {
-  customerlist!: Inventories[];
+export class OrderDetailsComponent {
+  customerlist!: OrderDetails[];
   displayedColumns: string[] = ["id","productname","expiry","units","action"];
   datasource: any;
   _response:any;
@@ -27,7 +26,7 @@ export class InventoriesComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private service: InventoriesService, private userservice: UserService, private toastr: ToastrService,
+  constructor(private service: OrderDetailsService, private userservice: UserService, private toastr: ToastrService,
     private router: Router) {
 
   }
@@ -42,19 +41,19 @@ export class InventoriesComponent {
       this.customerlist = item;
       console.log(item);
       console.log(this.customerlist);
-      this.datasource = new MatTableDataSource<Inventories>(this.customerlist);
+      this.datasource = new MatTableDataSource<OrderDetails>(this.customerlist);
       this.datasource.paginator = this.paginator;
       this.datasource.sort = this.sort;
     })
   }
 
   functionedit(id: number) {
-      this.router.navigateByUrl('/Inventories/edit/' + id)
+      this.router.navigateByUrl('/OrderDetails/edit/' + id)
   }
 
   functiondelete(id: number) {
       if (confirm('Are you sure?')) {
-        this.service.DeleteInventory(id).subscribe(item=>{
+        this.service.DeleteOrderDetails(id).subscribe(item=>{
           this._response=item;
           if (this._response) {
             this.toastr.success('Deleted successfully', 'Success');
@@ -65,5 +64,4 @@ export class InventoriesComponent {
         })
       }
   }
-
 }

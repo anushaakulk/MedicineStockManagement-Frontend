@@ -1,5 +1,6 @@
 export interface sales{
-    id:number;
-    salesDate:string;
-    customer:string;
+    id?:number;
+    Sdate:string;
+    Refid:number;
+    SupplierId:number
   }
