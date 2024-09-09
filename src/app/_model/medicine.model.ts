@@ -1,17 +1,11 @@
 export interface medicine {
     id?:number,
     mname: string,
-    cname: string,
+    category: number,
     mdescription: string,
     measurement: number,
     needsprescription: boolean,
     price: number,
     stockin: number,
-    stockout: number,
-    stockavailable: number,
-    // email: string
-    // phone: string
-    // id: number,
-    // isActive: boolean,
-    // statusname: string
+    stockout: number
 }

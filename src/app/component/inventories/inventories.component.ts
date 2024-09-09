@@ -9,6 +9,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatCard, MatCardContent, MatCardFooter, MatCardHeader } from '@angular/material/card';
 import { MaterialModule } from '../../material.module';
 import { Inventories } from '../../_model/inventories.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-inventories',
@@ -20,7 +21,7 @@ import { Inventories } from '../../_model/inventories.model';
 
 export class InventoriesComponent {
   customerlist!: Inventories[];
-  displayedColumns: string[] = ["id","productname","expiry","units","action"];
+  displayedColumns: string[] = ["id","productname","sku","expiry","units","action"];
   datasource: any;
   _response:any;
 
@@ -47,13 +48,50 @@ export class InventoriesComponent {
       this.datasource.sort = this.sort;
     })
   }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.datasource.filter = filterValue.trim().toLowerCase();
+
+    if (this.datasource.paginator) {
+      this.datasource.paginator.firstPage();
+    }
+  }
+  // Reset filter method
+  resetFilter() {
+    this.datasource = new MatTableDataSource<Inventories>(this.customerlist);  // Reset to original list
+    this.datasource.paginator = this.paginator;
+    this.datasource.sort = this.sort;
+  }
+
+  filterExpiringMedicines() {
+    const today = new Date();
+    const nextMonth = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
+
+    const expiringMedicines = this.customerlist.filter(medicine => {
+      const expiryDate = new Date(medicine.expiry);
+      return expiryDate > today && expiryDate < nextMonth;
+    });
+
+    this.datasource = new MatTableDataSource<Inventories>(expiringMedicines);
+    this.datasource.paginator = this.paginator;
+    this.datasource.sort = this.sort;
+  }
 
   functionedit(id: number) {
       this.router.navigateByUrl('/Inventories/edit/' + id)
   }
 
   functiondelete(id: number) {
-      if (confirm('Are you sure?')) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You won\'t be able to revert this!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) =>{
+      if (result.isConfirmed) {
         this.service.DeleteInventory(id).subscribe(item=>{
           this._response=item;
           if (this._response) {
@@ -64,6 +102,7 @@ export class InventoriesComponent {
           }
         })
       }
-  }
+  })
+}
 
 }

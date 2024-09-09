@@ -37,8 +37,9 @@ export class RegisterComponent {
         userName: this._regform.value.username as string,
         userType: "Admin",
         phone: this._regform.value.phone as string,
-        email: this._regform.value.email as string,
-        phash: this._regform.value.password as string
+        userEmail: this._regform.value.email as string,
+        phash: this._regform.value.password as string,
+        securityQuestion: "What is your favorite color?",
       }
       this.service.Userregisteration(_obj).subscribe(item => {
         this._response = item;

@@ -8,6 +8,7 @@ import { UserService } from '../../_service/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-medicine',
@@ -19,7 +20,7 @@ import { MatSort } from '@angular/material/sort';
 export class MedicineComponent implements OnInit {
 
   customerlist!: medicine[];
-  displayedColumns: string[] = ["mname","cname","mdescription","measurement","needsprescription","price","stockin","stockout","stockavailable","action"];
+  displayedColumns: string[] = ["id","mname","cname","mdescription","measurement","needsprescription","price","stockin","stockout","stockavailable","action"];
   datasource: any;
   _response:any;
 
@@ -44,16 +45,50 @@ export class MedicineComponent implements OnInit {
       this.datasource.sort = this.sort;
     })
   }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.datasource.filter = filterValue.trim().toLowerCase();
 
-  functionedit(code: string) {
-      this.router.navigateByUrl('/medicinelist/edit/' + code)
+    if (this.datasource.paginator) {
+      this.datasource.paginator.firstPage();
+    }
+  }
+  // Reset filter method
+  resetFilter() {
+    this.datasource = new MatTableDataSource<medicine>(this.customerlist);  // Reset to original list
+    this.datasource.paginator = this.paginator;
+    this.datasource.sort = this.sort;
   }
 
-  functiondelete(code: number) {
-      if (confirm('Are you sure?')) {
-        this.service.DeleteMedicineList(code).subscribe(item=>{
+  filterCriticalStock() {
+    const criticalStockLevel = 10;  // You can set any threshold for critical stock
+
+    const criticalStockMedicines = this.customerlist.filter(medicine => medicine.stockin-medicine.stockout < criticalStockLevel);
+
+    this.datasource = new MatTableDataSource<medicine>(criticalStockMedicines);
+    this.datasource.paginator = this.paginator;
+    this.datasource.sort = this.sort;
+  }
+
+
+  functionedit(id: number) {
+      this.router.navigateByUrl('/medicine/edit/' + id)
+  }
+
+  functiondelete(id: number) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You won\'t be able to revert this!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) =>{
+      if (result.isConfirmed) {
+        this.service.DeleteMedicineList(id).subscribe(item=>{
           this._response=item;
-          if (this._response.result === 'pass') {
+          if (this._response) {
             this.toastr.success('Deleted successfully', 'Success');
             this.Loadcustomer();
           } else {
@@ -61,6 +96,7 @@ export class MedicineComponent implements OnInit {
           }
         })
       }
-  }
+  })
+}
 
 }
